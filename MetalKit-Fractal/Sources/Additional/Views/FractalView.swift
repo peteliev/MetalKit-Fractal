@@ -30,6 +30,7 @@ final class FractalView: MTKView {
         guard let device = device else { return }
         commandQueue = device.makeCommandQueue()
         
+        createBuffers()
         registerShaders()
     }
     
@@ -46,6 +47,8 @@ final class FractalView: MTKView {
         
         commandEncoder.setComputePipelineState(computePipelineState)
         commandEncoder.setTexture(drawable.texture, index: 0)
+        commandEncoder.setBuffer(timerBuffer, offset: 0, index: 1)
+        update()
         
         let threadGroupCount = MTLSizeMake(8, 8, 1)
         let threadGroups = MTLSizeMake(drawable.texture.width / threadGroupCount.width, drawable.texture.height / threadGroupCount.height, 1)
@@ -57,12 +60,20 @@ final class FractalView: MTKView {
     }
     
     // MARK: - Private Properies
+    private var timer: Float = 0
+    private var timerBuffer: MTLBuffer? = nil
+    
     private var commandQueue: MTLCommandQueue? = nil
     private var computePipelineState: MTLComputePipelineState? = nil
 }
 
-// MARK: - Private Methods
+// MARK: - Setup Methods
 private extension FractalView {
+    
+    func createBuffers() {
+        guard let device = device else { return }
+        timerBuffer = device.makeBuffer(length: MemoryLayout<Float>.size, options: [])
+    }
     
     func registerShaders() {
         guard
@@ -72,5 +83,18 @@ private extension FractalView {
             let computePipelineState = try? device.makeComputePipelineState(function: kernel) else { return }
                 
         self.computePipelineState = computePipelineState
+    }
+}
+
+// MARK: - Update Methods
+private extension FractalView {
+    
+    func update() {
+        guard let timerBuffer = timerBuffer else { return }
+        
+        let bufferPointer = timerBuffer.contents()
+        memcpy(bufferPointer, &timer, MemoryLayout<Float>.size)
+        
+        timer += 0.01
     }
 }
