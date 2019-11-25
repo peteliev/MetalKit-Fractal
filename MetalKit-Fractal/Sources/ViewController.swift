@@ -9,6 +9,9 @@
 import Cocoa
 
 final class ViewController: NSViewController {
+    
+    // MARK: - Outlwts
+    @IBOutlet private weak var fractalView: FractalView!
 
     // MARK: - NSViewController
     override func viewDidLoad() {

@@ -730,7 +730,21 @@
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="jAT-Nr-nbg" customClass="FractalView" customModule="MetalKit_Fractal" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="jAT-Nr-nbg" secondAttribute="bottom" id="5Va-1k-QJ4"/>
+                            <constraint firstItem="jAT-Nr-nbg" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Bra-Tb-4xL"/>
+                            <constraint firstAttribute="trailing" secondItem="jAT-Nr-nbg" secondAttribute="trailing" id="bZ4-dQ-OzN"/>
+                            <constraint firstItem="jAT-Nr-nbg" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="qV5-AX-q9e"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="fractalView" destination="jAT-Nr-nbg" id="Nwy-P6-EQK"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
