@@ -11,6 +11,9 @@ import MetalKit
 
 final class FractalView: MTKView {
     
+    // MARK: - Public Property
+    var innerColorOffset: Float = 0
+    
     // MARK: - Initializers
     override init(frame frameRect: CGRect, device: MTLDevice?) {
         super.init(frame: frameRect, device: device)
@@ -48,7 +51,7 @@ final class FractalView: MTKView {
         commandEncoder.setComputePipelineState(computePipelineState)
         commandEncoder.setTexture(drawable.texture, index: 0)
         commandEncoder.setBuffer(timerBuffer, offset: 0, index: 1)
-        update()
+        commandEncoder.setBuffer(colorBuffer, offset: 0, index: 2)
         
         let threadGroupCount = MTLSizeMake(8, 8, 1)
         let threadGroups = MTLSizeMake(drawable.texture.width / threadGroupCount.width, drawable.texture.height / threadGroupCount.height, 1)
@@ -57,11 +60,14 @@ final class FractalView: MTKView {
         
         commandBuffer.present(drawable)
         commandBuffer.commit()
+        
+        update()
     }
     
     // MARK: - Private Properies
     private var timer: Float = 0
     private var timerBuffer: MTLBuffer? = nil
+    private var colorBuffer: MTLBuffer! = nil
     
     private var commandQueue: MTLCommandQueue? = nil
     private var computePipelineState: MTLComputePipelineState? = nil
@@ -72,7 +78,9 @@ private extension FractalView {
     
     func createBuffers() {
         guard let device = device else { return }
+        
         timerBuffer = device.makeBuffer(length: MemoryLayout<Float>.size, options: [])
+        colorBuffer = device.makeBuffer(length: MemoryLayout<Float>.size, options: [])
     }
     
     func registerShaders() {
@@ -92,8 +100,11 @@ private extension FractalView {
     func update() {
         guard let timerBuffer = timerBuffer else { return }
         
-        let bufferPointer = timerBuffer.contents()
+        var bufferPointer = timerBuffer.contents()
         memcpy(bufferPointer, &timer, MemoryLayout<Float>.size)
+        
+        bufferPointer = colorBuffer.contents()
+        memcpy(bufferPointer, &innerColorOffset, MemoryLayout<Float>.size)
         
         timer += 0.01
     }

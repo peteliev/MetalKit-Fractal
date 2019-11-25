@@ -732,14 +732,35 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="jAT-Nr-nbg" customClass="FractalView" customModule="MetalKit_Fractal" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <rect key="frame" x="0.0" y="40" width="480" height="230"/>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="hWe-nq-Rgi" userLabel="Footer View">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="40"/>
+                                <subviews>
+                                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="biR-03-AqW">
+                                        <rect key="frame" x="18" y="11" width="444" height="19"/>
+                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" tickMarkPosition="above" sliderType="linear" id="bbT-Iz-hkB"/>
+                                        <connections>
+                                            <action selector="sliderDidChangeValue:" target="XfG-lQ-9wD" id="fdy-Ki-g9b"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="biR-03-AqW" firstAttribute="centerY" secondItem="hWe-nq-Rgi" secondAttribute="centerY" id="0rj-x0-aXo"/>
+                                    <constraint firstAttribute="trailing" secondItem="biR-03-AqW" secondAttribute="trailing" constant="20" id="5Ve-8B-BM3"/>
+                                    <constraint firstAttribute="height" constant="40" id="cMr-Gh-07i"/>
+                                    <constraint firstItem="biR-03-AqW" firstAttribute="leading" secondItem="hWe-nq-Rgi" secondAttribute="leading" constant="20" id="fWm-FC-Au1"/>
+                                </constraints>
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="jAT-Nr-nbg" secondAttribute="bottom" id="5Va-1k-QJ4"/>
                             <constraint firstItem="jAT-Nr-nbg" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Bra-Tb-4xL"/>
                             <constraint firstAttribute="trailing" secondItem="jAT-Nr-nbg" secondAttribute="trailing" id="bZ4-dQ-OzN"/>
+                            <constraint firstAttribute="trailing" secondItem="hWe-nq-Rgi" secondAttribute="trailing" id="cp3-80-BSW"/>
+                            <constraint firstItem="hWe-nq-Rgi" firstAttribute="top" secondItem="jAT-Nr-nbg" secondAttribute="bottom" id="diN-nN-FTE"/>
+                            <constraint firstItem="hWe-nq-Rgi" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="kXf-Oi-czT"/>
                             <constraint firstItem="jAT-Nr-nbg" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="qV5-AX-q9e"/>
+                            <constraint firstAttribute="bottom" secondItem="hWe-nq-Rgi" secondAttribute="bottom" id="sRe-pH-hSP"/>
                         </constraints>
                     </view>
                     <connections>

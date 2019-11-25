@@ -18,6 +18,10 @@ final class ViewController: NSViewController {
         super.viewDidLoad()
         setupViewController()
     }
+    
+    @IBAction func sliderDidChangeValue(_ slider: NSSlider) {
+        fractalView.innerColorOffset = slider.floatValue
+    }
 }
 
 // MARK: - Setup Methods
