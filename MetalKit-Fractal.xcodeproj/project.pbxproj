@@ -13,6 +13,7 @@
 		6F2F2331238BFEC200BEEE0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F2F232F238BFEC200BEEE0B /* Main.storyboard */; };
 		6F2F2336238BFFD700BEEE0B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F2F2335238BFFD700BEEE0B /* Info.plist */; };
 		6FE13A37238C47F800B4D1AC /* FractalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE13A36238C47F800B4D1AC /* FractalView.swift */; };
+		6FE13A39238C4E8300B4D1AC /* Fractals.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6FE13A38238C4E8300B4D1AC /* Fractals.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		6F2F2334238BFFD000BEEE0B /* MetalKit_Fractal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetalKit_Fractal.entitlements; sourceTree = "<group>"; };
 		6F2F2335238BFFD700BEEE0B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FE13A36238C47F800B4D1AC /* FractalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalView.swift; sourceTree = "<group>"; };
+		6FE13A38238C4E8300B4D1AC /* Fractals.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Fractals.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		6FE13A34238C477C00B4D1AC /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				6FE13A38238C4E8300B4D1AC /* Fractals.metal */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				6FE13A37238C47F800B4D1AC /* FractalView.swift in Sources */,
 				6F2F2327238BFE8B00BEEE0B /* AppDelegate.swift in Sources */,
 				6F2F2325238BFE7700BEEE0B /* ViewController.swift in Sources */,
+				6FE13A39238C4E8300B4D1AC /* Fractals.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

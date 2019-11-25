@@ -68,7 +68,7 @@ private extension FractalView {
         guard
             let device = device,
             let library = device.makeDefaultLibrary(),
-            let kernel = library.makeFunction(name: "compute"),
+            let kernel = library.makeFunction(name: "computeFractal"),
             let computePipelineState = try? device.makeComputePipelineState(function: kernel) else { return }
                 
         self.computePipelineState = computePipelineState
