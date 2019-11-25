@@ -8,20 +8,21 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+final class ViewController: NSViewController {
 
+    // MARK: - NSViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupViewController()
     }
+}
 
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+// MARK: - Setup Methods
+private extension ViewController {
+    
+    func setupViewController() {
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.white.cgColor
     }
-
-
 }
 
